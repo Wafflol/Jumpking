@@ -25,6 +25,9 @@ class Level{
 
         pop();
     }
+    returnLines(){
+        return this.lines;
+    }
 
 
 }

@@ -115,7 +115,10 @@ let levelNumber = 0;
 
 function draw() {
     background(10);
-
+    // print(player.currentPos);
+    // print("    ");
+    //print(levels[levelNumber]);
+    //  print(levels[levelNumber].returnLines());
 
     // if(frameCount % 5==0 ){
     //
@@ -259,6 +262,9 @@ function keyPressed() {
             jumpSound.stop();
             landSound.stop();
             fallSound.stop();
+            break;
+        case 'L':
+            myfunction();
             break;
     }
 
