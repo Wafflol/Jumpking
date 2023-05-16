@@ -3,23 +3,28 @@ import os
 from pyppeteer import launch
 from time import sleep
 import subprocess
+#import startWebpage
 
 
-print(os.getcwd())
+#print(os.getcwd())
 
 
 async def main():
-    subprocess.call(['sh', './Jump-King-game/Run.sh'])
+    # subprocess.call(['sh', './Jump-King-game/Run.sh'])
 
-    while True:
-        try:
-            reader, writer = await asyncio.open_connection('localhost', 8000)
-            writer.close()
-            break
-        except ConnectionRefusedError:
-            await asyncio.sleep(5)  # Increase delay to give server more time to start up
+    # while True:
+    #     try:
+    #         reader, writer = await asyncio.open_connection('localhost', 8000)
+    #         writer.close()
+    #         break
+    #     except ConnectionRefusedError:
+    #         await asyncio.sleep(5)  # Increase delay to give server more time to start up
+            
+    server_process = subprocess.Popen(['php', '-S', 'localhost:8000', '-t', '/home/wafflol/Downloads/JumpKingAgent/Jump-King-game'])        
+            
+            
     #print("launching")
-    browser = await launch(headless=False, ignoreHTTPSErrors=True, args=['--no-sandbox', '--window-size=1920,1080'])
+    browser = await launch(headless=True, ignoreHTTPSErrors=True, args=['--no-sandbox', '--window-size=1920,1080'])
     #print("launched")
     page = await browser.newPage()
     #print("creating new page")
@@ -30,6 +35,7 @@ async def main():
     await page.waitFor(5000)
     await page.screenshot({'path': 'screenshot.png'})
     await browser.close()
-    #server_process.terminate()
+    
+    server_process.terminate()
 
 asyncio.get_event_loop().run_until_complete(main())

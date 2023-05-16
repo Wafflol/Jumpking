@@ -1,2 +1,2 @@
 import os
-os.system('./Run.sh')
+os.system('./Jump-King-game/Run.sh')
