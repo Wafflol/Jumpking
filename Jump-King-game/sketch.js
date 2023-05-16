@@ -1,3 +1,5 @@
+const render = true
+
 let width = 0;
 let height = 0;
 let canvas = null;
@@ -138,10 +140,14 @@ function draw() {
     push()
     translate(0, 50);
     if (testingSinglePlayer) {
-        image(levels[player.currentLevelNo].levelImage, 0, 0)
-        levels[player.currentLevelNo].show();
+        if(render){
+            image(levels[player.currentLevelNo].levelImage, 0, 0)
+            levels[player.currentLevelNo].show();
+        }
         player.Update();
-        player.Show();
+        if(render){
+            player.Show(); 
+        }
     } else if(replayingBestPlayer) {
         if(!cloneOfBestPlayer.hasFinishedInstructions){
             for (let i = 0; i < evolationSpeed; i++){
