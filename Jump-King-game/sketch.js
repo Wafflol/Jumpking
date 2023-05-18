@@ -86,6 +86,7 @@ function setup() {
     fallSound.playMode('sustain');
     bumpSound.playMode('sustain');
     landSound.playMode('sustain');
+    //window.sendOutput("setup");
 
     // lines.push(new Line(200,height - 80,width - 200, height-80));
     // lines.push(new Line(10,height - 500,200, height-500));
@@ -351,6 +352,7 @@ function keyReleased() {
             }
             break;
         case 'N':
+
             if (creatingLines) {
                 levelNumber += 1;
                 linesString += '\nlevels.push(tempLevel);';
