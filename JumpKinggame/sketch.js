@@ -86,6 +86,7 @@ function setup() {
     fallSound.playMode('sustain');
     bumpSound.playMode('sustain');
     landSound.playMode('sustain');
+    frameRate(1000);
     //window.sendOutput("setup");
 
     // lines.push(new Line(200,height - 80,width - 200, height-80));
@@ -145,6 +146,23 @@ function draw() {
             image(levels[player.currentLevelNo].levelImage, 0, 0)
             levels[player.currentLevelNo].show();
         }
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
+        player.Update();
         player.Update();
         if(render){
             player.Show(); 
@@ -271,7 +289,14 @@ function keyPressed() {
             fallSound.stop();
             break;
         case 'L':
-            myfunction();
+            sendLineData();
+            break;
+        case 'M':
+            player.currentLevelNo = 0;
+            player.currentPos = createVector(600, 755)
+            break;
+        case 'A':
+            sendHover();
             break;
     }
 
@@ -373,6 +398,11 @@ function keyReleased() {
                 mousePos1 = null;
                 mousePos2 = null;
             }
+            break;
+        case 'L':
+            console.log("hi")
+            break;
+            
     }
 
     switch (keyCode) {

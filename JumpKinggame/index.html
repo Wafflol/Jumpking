@@ -14,31 +14,40 @@
     <script language="javascript" type="text/javascript" src="Coin.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script>
-        //function pyppeteerCallback(outputData) {
-            // Send the output data back to Python
-            //window.pyppeteer.callback(outputData);
-        //}
-        
 
-
-        function myfunction() {
+        function sendLineData() {
             let lineList = [];
             function organizeLines(line){
-                lineList.push(line.x1, line.x2, line.y1, line.y2);
+                lineList.push([[line.x1, line.y1], [line.x2, line.y2]]);
             }
             //window.sendOutput("myfunc");
             //window.sendOutput(player.currentPos.x);
+            //console.log("isGrounded" + player.isOnGround)
+            
             const playerPosition = [player.currentPos.x, player.currentPos.y];
-            const lines = levels[levelNumber].returnLines();
-            lines.forEach(organizeLines)
+            const lines = levels[player.currentLevelNo].returnLines();
+            lines.forEach(organizeLines);
             //console.log(playerPosition);
             //console.log(lineList)
-            window.sendOutput(playerPosition, lineList);
+            lineList.push([[0, 0], [0, 900]]);
+            lineList.push([[0, 900], [1200, 900]]);
+            lineList.push([[1200, 0], [1200, 900]]);
+            lineList.push([[0, 0], [20, 0]]);
+            lineList.push([[1180, 0], [1200, 0]]);
+            //lineList.push([[0, 0], [1200, 0]])
+
+            window.sendOutput(playerPosition, lineList, player.currentLevelNo);
+            //window.printCurrentLevel(player.currentLevelNo)
             
+        }
+
+        function sendHover(){
+            console.log("inAir: " + ! player.isOnGround)
+            window.inAir(! player.isOnGround);
         }
     
     </script>
-    <!--<script language="javascript" type="module" src="ReturnMetadata.js"></script>-->
+
     <style>
         body {
             background-color: rgb(30,30,30);
@@ -49,11 +58,6 @@
 <body>
 <center>
     <div id="canvas"></div>
-    <FONT color="#ffffff" size="3" face="Courier">Thanks to the team behind Jump King for letting me keep this up, u guys are legends</FONT>
-    <BR>
-    <a href="https://store.steampowered.com/app/1061090/Jump_King/"  style="font-family:Courier; color:white;">Please support the official game on steam its pretty dope CLICK ME</a>
-    <BR>
-    <FONT color="#ffffff" size="3" face="Courier">if this shit aint loading then just keep hitting refresh, have fun and remember, dont press n</FONT> 
 </center>
 </body>
 </html>

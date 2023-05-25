@@ -3,7 +3,7 @@ let maxJumpSpeed = 22
 let maxJumpTimer = 30
 let jumpSpeedHorizontal = 8
 let terminalVelocity = 20
-let gravity = 0.6;
+let gravity = 0.6
 
 let runSpeed = 4;
 let maxBlizzardForce = 0.3;
@@ -548,7 +548,7 @@ class Player {
                 if (bottom) {//treat like floor
                     // print("bottome only");
                     let closestPointY = min(chosenLine.y1, chosenLine.y2)
-                    // this.isOnGround = true
+                    this.isOnGround = true //uncommented this LINE IDK IF IT WOKRS
                     this.currentSpeed = createVector(0, 0)
                     // ok we gonna need to snap this shit
                     this.currentPos.y = closestPointY - this.height - 1;
